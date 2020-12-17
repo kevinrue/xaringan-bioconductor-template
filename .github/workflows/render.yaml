@@ -17,6 +17,7 @@ jobs:
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - uses: actions/checkout@v2
@@ -26,7 +27,7 @@ jobs:
           options(repos = c(CRAN = "https://cran.r-project.org"))
           install.packages(c('renv', 'remotes', 'BiocManager'))
         shell: Rscript {0}
-        
+
       - name: Cache renv
         uses: actions/cache@v1
         with:
@@ -38,7 +39,7 @@ jobs:
         run: |
           renv::restore()
         shell: Rscript {0}
-        
+
       # This lets us augment with additional dependencies
       - name: Install system dependencies
         if: runner.os == 'Linux'
