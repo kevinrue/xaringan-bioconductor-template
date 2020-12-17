@@ -6,7 +6,4 @@
 index.html
 index.pdf
 libs
-.Rprofile
-renv
-renv.lock
 xaringan-bioconductor-template.Rproj
